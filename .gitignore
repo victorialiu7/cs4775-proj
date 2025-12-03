@@ -1,6 +1,16 @@
-# Ignore data files
+# Data files
 *.xls
 *.xlsx
 *.tsv
-*.txt
 *.csv
+data_*.txt
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
