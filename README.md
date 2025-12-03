@@ -51,16 +51,28 @@ pip install -r requirements.txt
    **Step 4b: Create merged dataset**
    
    You'll need to merge the clinical and expression data to create `merged.csv`. The merged file should have:
-   - Gene expression columns (one per gene)
-   - `PATIENT_ID` - Patient identifier
-   - `high_risk` - Binary label (True/False) derived from clinical data
+    - Gene expression columns (one per gene)
+    - `PATIENT_ID` - Patient identifier
+    - `high_risk` - Binary label (True/False) derived from clinical data
    
    **Step 4c: Gene sets**
    
-   You also need `enrich-input1-GO_BP.tsv` - Gene sets from GO Biological Process:
-   - Tab-separated file with a `genes` column
-   - Each row contains comma-separated gene names
-   - Can be obtained from enrichment analysis tools (e.g., Enrichr, DAVID, g:Profiler)
+    You need to create enrich-input1-GO_BP.tsv - Gene sets from GO Biological Process enrichment:
+
+    Get seed gene list:
+    - The paper uses a 322-gene list from "Consensus genes of the literature to predict breast cancer recurrence"
+    - Alternative: Download the 41-gene CBCG list from CBCG website (https://cbcg.dk/causal.html)
+
+    Perform enrichment analysis:
+    - Go to GeneCodis (or similar tool like Enrichr, DAVID)
+    - Input your gene list
+    - Run GO Biological Process enrichment analysis
+    - Download results as TSV
+
+    Required format:
+    - Tab-separated file with a genes column
+    - Each row contains comma-separated gene names (e.g., "TP53, BRCA1, EGFR")
+    - Filter to keep only gene sets with 2+ genes (to avoid zero standard deviation in calculations)
 
 ## Usage
 
